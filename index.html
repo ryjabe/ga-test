@@ -10,6 +10,80 @@
 
   gtag('config', 'UA-171996790-1');
 </script>
+<script>
+
+// Function that will make a call to the API and receive the IDL
+
+function getIDL() {
+
+   return fetch(`https://api.rlcdn.com/api/identity/idl?pid=1317`, { credentials: 'include' })
+
+    .then((res) => res.text())
+
+    .then((data) => {
+
+      return launchGA(JSON.parse(data).idl);
+
+    })
+
+    .catch((err) => {
+
+      console.log(err);
+
+    });
+
+  }
+
+ 
+
+function launchGA(idl) {
+
+ 
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+  })(window,document,'script','https://www.google-analytics.com/analytics_debug.js','ga');
+
+ 
+
+   window.ga_debug = {trace: true};
+
+ 
+
+//Please add your GA ID here in single quotes.
+
+  ga('create', 'UA-171996790-1', 'auto');
+
+ 
+
+  // Sends an event that passes 'idl' as a parameter.
+
+  // Make sure ‘dimension1’ is renamed based on how you named it
+
+  // Event, Action, Label
+
+  ga('send', 'pageview', {
+
+    'dimension1': identitylink
+
+  });
+
+ 
+
+}
+
+ 
+
+getIDL();
+
+</script>
+
+
+    
     <title>This is the title of the webpage!</title>
   </head>
   <body>
